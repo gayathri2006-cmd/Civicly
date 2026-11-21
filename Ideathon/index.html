@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#f7f8f5" />
+  <meta name="description" content="Report local infrastructure issues and follow their progress with Civicly." />
+  <title>Civicly — Better streets start with a report</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="announcement"><span class="pulse"></span> Your neighborhood, heard. A clearer way to get things fixed.</div>
+  <header class="topbar">
+    <a class="brand" href="#home" aria-label="Civicly home"><span class="brand-mark"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3.5 28.5 10v12L16 28.5 3.5 22V10L16 3.5Z"/><path d="M10 16.2 14 20l8-8"/></svg></span><span>Civicly<span class="brand-period">.</span></span></a>
+    <nav class="main-nav" aria-label="Main navigation"><a href="#home" data-nav="home">Overview</a><a href="#dashboard" data-nav="dashboard">Public dashboard</a><a href="#report" data-nav="report">Report an issue</a></nav>
+    <div class="top-actions"><button class="icon-button" id="theme-toggle" aria-label="Toggle color theme" title="Toggle theme"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3.5"/><path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"/></svg></button><div id="account-slot"><button class="button button-outline button-small" id="login-open">Sign in <span>↗</span></button></div><button class="mobile-menu" id="mobile-menu" aria-label="Open menu">☰</button></div>
+  </header>
+  <main id="app"></main>
+  <footer class="footer"><a class="brand footer-brand" href="#home"><span class="brand-mark"><svg viewBox="0 0 32 32"><path d="M16 3.5 28.5 10v12L16 28.5 3.5 22V10L16 3.5Z"/><path d="M10 16.2 14 20l8-8"/></svg></span><span>Civicly<span class="brand-period">.</span></span></a><p>Small reports. Better neighborhoods.</p><span class="footer-right">Built for the people who live here <span>✳</span></span></footer>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <dialog id="auth-dialog" class="modal"><form id="auth-form"><button type="button" class="modal-close" id="auth-close" aria-label="Close">×</button><div class="eyebrow">WELCOME TO CIVICLY</div><h2 id="auth-title">Good to have you here.</h2><p class="muted" id="auth-subtitle">Sign in to track your reports and make your neighborhood better.</p><div class="auth-tabs"><button type="button" class="auth-tab active" data-auth-mode="login">Sign in</button><button type="button" class="auth-tab" data-auth-mode="register">Create account</button></div><label class="field" id="name-field" hidden><span>Your name</span><input name="name" autocomplete="name" placeholder="Alex Morgan" /></label><label class="field"><span>Email address</span><input required type="email" name="email" autocomplete="email" placeholder="you@example.com" /></label><label class="field"><span>Password</span><input required type="password" name="password" autocomplete="current-password" minlength="6" placeholder="At least 6 characters" /></label><button class="button button-primary button-full" id="auth-submit" type="submit">Sign in <span>→</span></button><p class="auth-note" id="auth-note">Demo mode saves your account on this device.</p></form></dialog>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
