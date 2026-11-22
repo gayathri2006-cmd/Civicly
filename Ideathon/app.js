@@ -43,7 +43,7 @@ function toast(message){
       msg = document.createElement('div');
       msg.id = 'auth-message';
       msg.className = 'auth-message';
-      document.querySelector('#auth-form').prepend(msg);
+      dialog.querySelector('.modal-content')?.prepend(msg) || dialog.prepend(msg);
     }
 
     msg.textContent = message;
