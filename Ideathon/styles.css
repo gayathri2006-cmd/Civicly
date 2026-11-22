@@ -55,3 +55,20 @@
   background: var(--mint);
   color: var(--green);
 }
+.complaint-table th:last-child,
+.complaint-table td:last-child {
+  min-width: 100px;
+  white-space: nowrap;
+}
+
+.complaint-table td [data-delete] {
+  display: inline-flex;
+  background: #fae9e6;
+  color: #b45649;
+  border: 0;
+  padding: 8px 12px;
+  border-radius: 7px;
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 700;
+}
