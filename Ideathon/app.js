@@ -32,7 +32,30 @@ function statusBadge(status){const c={'Submitted':'','Under Review':'badge-revie
 function severityBadge(level){return `<span class="badge badge-${level.toLowerCase()}">${esc(level)}</span>`}
 function dateShort(date){return new Intl.DateTimeFormat('en',{month:'short',day:'numeric'}).format(new Date(date))}
 function relative(date){let d=Math.floor((Date.now()-new Date(date))/86400000);return d<1?'Today':d===1?'Yesterday':`${d} days ago`}
-function toast(message){const el=document.querySelector('#toast');el.textContent=message;el.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>el.classList.remove('show'),2800)}
+function toast(message){
+  const el = document.querySelector('#toast');
+  const dialog = document.querySelector('#auth-dialog');
+
+  if (dialog?.open) {
+    let msg = dialog.querySelector('#auth-message');
+
+    if (!msg) {
+      msg = document.createElement('div');
+      msg.id = 'auth-message';
+      msg.className = 'auth-message';
+      document.querySelector('#auth-form').prepend(msg);
+    }
+
+    msg.textContent = message;
+    msg.classList.add('show');
+    return;
+  }
+
+  el.textContent = message;
+  el.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => el.classList.remove('show'), 4000);
+}
 function setUser(user,prof){currentUser=user;profile=prof;renderAccount()}
 function renderAccount(){const slot=document.querySelector('#account-slot');if(!currentUser){slot.innerHTML='<button class="button button-outline button-small" id="login-open">Sign in <span>↗</span></button>';document.querySelector('#login-open').onclick=()=>openAuth('login');return}slot.innerHTML=`<div class="account-menu"><button class="button button-outline button-small" id="account-button">${esc(profile?.name||currentUser.email?.split('@')[0]||'Account')} ▾</button><div id="account-dropdown" hidden><a href="#my-complaints">My complaints</a>${profile?.role==='admin'?'<a href="#admin">Admin dashboard</a>':''}<button id="signout">Sign out</button></div></div>`;document.querySelector('#account-button').onclick=()=>{const d=document.querySelector('#account-dropdown');d.hidden=!d.hidden};document.querySelector('#signout').onclick=signOut}
 
